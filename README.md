@@ -24,3 +24,52 @@ ctrl z will close the terminal but carry on running in the background
 - if you do this then kill it with kill -1 brute force
   
 Only one thing can be running on a port. So two services cant use the same port. 
+
+## Database VM
+
+Steps to setup database:
+
+1. Linux VM - Ubuntu 18.04 LTS
+2. update and upgrade
+3. install mongo db - version 3.2.x
+   1. download key to get the right version
+   2. source list - specify mongo db version
+   3. update again
+   4. install mongo db
+4. configure mongo db to accept connections from app VM
+
+Command steps:
+
+    sudo apt update -y
+    sudo apt upgrade -y
+    wget -qO - https://www.mongodb.org/static/pgp/server-3.2.asc | sudo apt-key add -
+    sudo apt update -y
+    sudo apt-get install -y mongodb-org=3.2.20 mongodb-org-server=3.2.20 mongodb-org-shell=3.2.20 mongodb-org-mongos=3.2.20 mongodb-org-tools=3.2.20
+    sudo nano /etc/mongod.conf
+
+This will open up the mongo db configurations. The bind Ip is 127.0.0.1 which is local host. We want to open this up to any outside connections. To do this change it to 0.0.0.0 . This is for testing ONLY.
+
+Then the next steps:
+
+1. Check if it is running (it isnt)
+2. Start mongodb
+3. enable mongodb
+
+Commands: 
+    sudo systemctl status mongod
+    sudo systemctl start mongod
+    sudo systemctl enable mongod
+
+## Connect app and database
+
+Next you need to connect the app and the database.
+
+On the app virtual machine you need to set up an environment variable.
+
+    export DB_HOST=mongodb://<DB-IP-ADDRESS>:27017/posts #Example
+    export DB_HOST=mongodb://20.162.216.139:27017/posts #Actual one I used
+    npm install
+
+We havent made a rule which allows things to connect to the app through this certain port.
+
+So we need to add a new import rule in networking for the app to allow this port 27017.
