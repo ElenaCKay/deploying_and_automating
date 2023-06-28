@@ -84,4 +84,7 @@ To do this go in to /etc/nginx/sites-available
 
 In here then add in the location / {}
 
+     proxy_pass http://20.0.224.25:3000/;
+
+
  ![reverse proxy screen shot](reverse_proxy_img.png)   
