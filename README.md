@@ -73,3 +73,15 @@ On the app virtual machine you need to set up an environment variable.
 We havent made a rule which allows things to connect to the app through this certain port.
 
 So we need to add a new import rule in networking for the database to allow this port 27017.
+
+Adding & would work the first time but then the second time you wouldnt be able to kill it as it would have a different process ID number.
+
+## Adding in a reverse proxy server
+
+To do this go in to /etc/nginx/sites-available
+
+    sudo nano default
+
+In here then add in the location / {}
+
+ ![reverse proxy screen shot](reverse_proxy_img.png)   
