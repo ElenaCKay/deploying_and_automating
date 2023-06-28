@@ -28,7 +28,7 @@ sudo apt install nodejs -y
 sudo npm install pm2 -g
 echo "installed node and pm2"
 
-# create env variable
+# create env variable. Ensure the ip is changed to represent the correct db vm
 export DB_HOST=mongodb://20.162.216.139:27017/posts
 printenv DB_HOST
 echo "env variable created"
