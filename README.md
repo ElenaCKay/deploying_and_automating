@@ -72,4 +72,4 @@ On the app virtual machine you need to set up an environment variable.
 
 We havent made a rule which allows things to connect to the app through this certain port.
 
-So we need to add a new import rule in networking for the app to allow this port 27017.
+So we need to add a new import rule in networking for the database to allow this port 27017.
