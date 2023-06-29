@@ -84,7 +84,19 @@ To do this go in to /etc/nginx/sites-available
 
 In here then add in the location / {}
 
-     proxy_pass http://20.0.224.25:3000/;
+     proxy_pass http://localhost:3000/;
+
+![reverse proxy img](reverse_proxy_img.png)
+
+![reverse proxy commands](<reverse proxy commands.png>)
 
 
- ![reverse proxy screen shot](reverse_proxy_img.png)   
+## What have I learned from blockers?
+
+- Make sure that the port 27017 is Custom
+- Ensure the bind ip has changed to 0.0.0.0
+- Make sure all the ip addresses match the azure ip addresses
+- Remember to cd into the correct directories
+- Don't forget the -i in the sed command
+- Start the DB first and then the app
+- The reverse proxy server has localhost in it not the ip
