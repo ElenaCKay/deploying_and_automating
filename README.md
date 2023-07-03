@@ -1,29 +1,48 @@
 # Deploying and Automating
 
-1. Always do the update and upgrade first.
-2. we will need nginx so we have a web server
-3. maybe need git if it isnt already installed
-4. `curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -` - This command is the version of node that we want. It is an older version which is no longer supported.
-5. install node.js `sudo apt install nodejs -y`
-6. `sudo npm install pm2 -g` node package manager pm2 runs node in the background
-7. within the app directory `npm install` only works if nginx is running
-8.  `npm start` or `node app.js`
+## App Script:
 
-Running and listening on port 3000
+To deploy and automate your application, follow these steps within the app script:
 
-To allow the port (create a rule)
-On portal azure - networking tab:
-1. add inbound security rule
-2. change port to 3000
-3. protocol is TCP
-4. add it
+Always perform an update and upgrade of the system first to ensure it is up to date.
 
-ctrl c to exit from listening -> More harsh than ctrl z.
+Install Nginx as a web server if it is not already installed.
 
-ctrl z will close the terminal but carry on running in the background
-- if you do this then kill it with kill -1 brute force
-  
-Only one thing can be running on a port. So two services cant use the same port. 
+If Git is not already installed, you may need to install it.
+
+Install a specific version of Node.js using the command: curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -. Note that this command installs an older version of Node.js that is no longer supported.
+
+Install Node.js by running: sudo apt install nodejs -y.
+
+Install the pm2 package globally using npm: sudo npm install pm2 -g. pm2 is a node package manager that runs Node.js applications in the background.
+
+Navigate to the app directory and run npm install. Note that this command will only work if Nginx is running.
+
+Start the application either by running npm start or node app.js. The application will run and listen on port 3000.
+
+## Creating an Inbound Security Rule for Port 3000:
+
+To allow inbound traffic on port 3000, follow these steps in the Azure portal:
+
+Go to the Azure portal and navigate to the networking tab of your resource.
+
+Add an inbound security rule.
+
+Set the port to 3000.
+
+Choose the TCP protocol.
+
+Save the rule to apply the changes.
+
+## Terminating the Application:
+
+To terminate the application:
+
+Use Ctrl + C to exit from the application's listening mode. Note that this action is more abrupt than using Ctrl + Z.
+
+If you have used Ctrl + Z, it will close the terminal but keep the application running in the background. To completely stop it, you can use the kill -1 command.
+
+Note that only one service can run on a specific port at a time. So, two services cannot use the same port simultaneously.
 
 ## Database VM
 
@@ -47,18 +66,13 @@ Command steps:
     sudo apt-get install -y mongodb-org=3.2.20 mongodb-org-server=3.2.20 mongodb-org-shell=3.2.20 mongodb-org-mongos=3.2.20 mongodb-org-tools=3.2.20
     sudo nano /etc/mongod.conf
 
-This will open up the mongo db configurations. The bind Ip is 127.0.0.1 which is local host. We want to open this up to any outside connections. To do this change it to 0.0.0.0 . This is for testing ONLY.
+1. In the mongod.conf file, change the bind IP from 127.0.0.1 to 0.0.0.0 to allow outside connections. Note that this change is for testing purposes only.
 
-Then the next steps:
+2. Check if MongoDB is running using sudo systemctl status mongod.
 
-1. Check if it is running (it isnt)
-2. Start mongodb
-3. enable mongodb
+3. Start MongoDB using sudo systemctl start mongod.
 
-Commands: 
-    sudo systemctl status mongod
-    sudo systemctl start mongod
-    sudo systemctl enable mongod
+4. Enable MongoDB to start on boot using sudo systemctl enable mongod.
 
 ## Connect app and database
 
@@ -78,11 +92,13 @@ Adding & would work the first time but then the second time you wouldnt be able 
 
 ## Adding in a reverse proxy server
 
-To do this go in to /etc/nginx/sites-available
+To add a reverse proxy server, which affects the Nginx configuration file located on the app VM, follow these steps:
 
-    sudo nano default
+1. Go to the /etc/nginx/sites-available directory.
 
-In here then add in the location / {}
+2. Open the default file using the command: sudo nano default.
+
+3. Add the following configuration within the location / {} block:
 
      proxy_pass http://localhost:3000/;
 
