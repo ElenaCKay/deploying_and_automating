@@ -80,11 +80,11 @@ Command steps:
 
 1. In the mongod.conf file, change the bind IP from 127.0.0.1 to 0.0.0.0 to allow outside connections. Note that this change is for testing purposes only.
 
-2. Check if MongoDB is running using sudo systemctl status mongod.
+2. Check if MongoDB is running using `sudo systemctl status mongod`.
 
-3. Start MongoDB using sudo systemctl start mongod.
+3. Start MongoDB using `sudo systemctl start mongod`.
 
-4. Enable MongoDB to start on boot using sudo systemctl enable mongod.
+4. Enable MongoDB to start on boot using `sudo systemctl enable mongod`.
    
 These steps can be seen in the db_script.md file. /scripts/db_script.md
 
