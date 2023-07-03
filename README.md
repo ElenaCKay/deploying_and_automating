@@ -52,7 +52,7 @@ To terminate the application:
 
 Use Ctrl + C to exit from the application's listening mode. Note that this action is more abrupt than using Ctrl + Z.
 
-If you have used Ctrl + Z, it will close the terminal but keep the application running in the background. To completely stop it, you can use the kill -1 command.
+If you have used Ctrl + Z, it will close the terminal but keep the application running in the background. To completely stop it, you can use the kill -9 command.
 
 Note that only one service can run on a specific port at a time. So, two services cannot use the same port simultaneously.
 
