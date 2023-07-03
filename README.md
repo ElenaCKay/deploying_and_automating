@@ -120,6 +120,8 @@ To add a reverse proxy server, which affects the Nginx configuration file locate
 
 ![reverse proxy commands](<reverse proxy commands.png>)
 
+4. `sudo nginx -t` -> This will test if nginx is working correctly and that you havent made any errors editing the file.
+
 
 ## What have I learned from blockers?
 
