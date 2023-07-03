@@ -4,35 +4,37 @@
 
 To deploy and automate your application, follow these steps within the app script:
 
-Always perform an update and upgrade of the system first to ensure it is up to date.
+1. Always perform an update and upgrade of the system first to ensure it is up to date.
 
-Install Nginx as a web server if it is not already installed.
+2. Install Nginx as a web server if it is not already installed.
 
-If Git is not already installed, you may need to install it.
+3. If Git is not already installed, you may need to install it.
 
-Install a specific version of Node.js using the command: curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -. Note that this command installs an older version of Node.js that is no longer supported.
+4. Install a specific version of Node.js using the command: curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -. Note that this command installs an older version of Node.js that is no longer supported.
 
-Install Node.js by running: sudo apt install nodejs -y.
+5. Install Node.js by running: sudo apt install nodejs -y.
 
-Install the pm2 package globally using npm: sudo npm install pm2 -g. pm2 is a node package manager that runs Node.js applications in the background.
+6. Install the pm2 package globally using npm: sudo npm install pm2 -g. pm2 is a node package manager that runs Node.js applications in the background.
 
-Navigate to the app directory and run npm install. Note that this command will only work if Nginx is running.
+7. Navigate to the app directory and run npm install. Note that this command will only work if Nginx is running.
 
-Start the application either by running npm start or node app.js. The application will run and listen on port 3000.
+8. Start the application either by running npm start or node app.js. The application will run and listen on port 3000.
+
+These steps can be seen in the app_script.md file. \scripts\app_script.md
 
 ## Creating an Inbound Security Rule for Port 3000:
 
 To allow inbound traffic on port 3000, follow these steps in the Azure portal:
 
-Go to the Azure portal and navigate to the networking tab of your resource.
+1. Go to the Azure portal and navigate to the networking tab of your resource.
 
-Add an inbound security rule.
+2. Add an inbound security rule.
 
-Set the port to 3000.
+3. Set the port to 3000.
 
-Choose the TCP protocol.
+4. Choose the TCP protocol.
 
-Save the rule to apply the changes.
+5. Save the rule to apply the changes.
 
 ## Terminating the Application:
 
@@ -73,6 +75,8 @@ Command steps:
 3. Start MongoDB using sudo systemctl start mongod.
 
 4. Enable MongoDB to start on boot using sudo systemctl enable mongod.
+   
+These steps can be seen in the db_script.md file. /scripts/db_script.md
 
 ## Connect app and database
 
