@@ -2,7 +2,7 @@
 
 ## SCP app folder
 
-This must been run in the git bash terminal not in the VM. Chech which directory you are in as this will effect the path of the app folder in the command.
+This command will get the app folder into your VM.  You can use this instead of git clone. This must been run in the git bash terminal not in the VM. Chech which directory you are in as this will effect the path of the app folder in the command.
 
 Example:
 
