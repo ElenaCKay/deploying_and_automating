@@ -1,5 +1,15 @@
 # Deploying and Automating
 
+## SCP app folder
+
+This must been run in the git bash terminal not in the VM. Chech which directory you are in as this will effect the path of the app folder in the command.
+
+Example:
+
+`scp -r -i ~/.ssh/tech241-elena-az-key app/adminuser@20.58.17.11:~/`
+
+`scp -r -i ~/.ssh/<ssh private key> <app folder path>/adminuser@<app VM IP address>:~/`
+
 ## App Script:
 
 To deploy and automate your application, follow these steps within the app script:
